@@ -24,6 +24,7 @@ func NewServer() *negroni.Negroni {
 	return n
 }
 
-func initRouter(mux *mux.Router, render *render.Render, repository userWhoRepository) {
-
+func initRouter(mux *mux.Router, formatter *render.Render, repository userWhoRepository) {
+	mux.HandleFunc("/firmpersons", createFirmPersonHandler(formatter, repository)).Methods("POST")
+	mux.HandleFunc("/physicalpersons", createFirmPersonHandler(formatter, repository)).Methods("POST")
 }
