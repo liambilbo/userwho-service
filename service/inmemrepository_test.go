@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/liambilbo/userwho/userwho-engine"
+	"github.com/liambilbo/userwho-engine"
 	"testing"
 )
 

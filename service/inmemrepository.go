@@ -2,7 +2,7 @@ package service
 
 import (
 	"errors"
-	"github.com/liambilbo/userwho/userwho-engine"
+	"github.com/liambilbo/userwho-engine"
 )
 
 type inMemoryUserWhoRepository struct {

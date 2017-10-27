@@ -1,6 +1,6 @@
 package service
 
-import "github.com/liambilbo/userwho/userwho-engine"
+import "github.com/liambilbo/userwho-engine"
 
 type newMatchResponse struct {
 	ID          string `json:"id"`
