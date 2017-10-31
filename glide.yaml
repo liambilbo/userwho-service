@@ -1,0 +1,8 @@
+package: github.com/liambilbo/userwho-service
+import:
+- package: github.com/codegangsta/negroni
+  version: ^0.2.0
+- package: github.com/gorilla/mux
+  version: ^1.5.0
+- package: github.com/liambilbo/userwho-engine
+- package: github.com/unrolled/render
