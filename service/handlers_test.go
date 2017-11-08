@@ -18,7 +18,7 @@ var (
 )
 
 const (
-	fakeMatchLocationResult = "/persons/5a003b78-409e-4452-b456-a6f0dcee05bd"
+	fakeMatchLocationResult = "/firmpersons/5a003b78-409e-4452-b456-a6f0dcee05bd"
 )
 
 func CreateFirmPersonRespondToBadData(t *testing.T) {
@@ -60,7 +60,7 @@ func CreateFirmPersonRespondToBadData(t *testing.T) {
 
 func TestCreateFirmPerson(t *testing.T) {
 	client := &http.Client{}
-	person := []byte("{\"name\":\"Caminos S.A.\"}")
+	person := []byte("{\"name\":\"Lorea Gardening S.A.\"}")
 	repository := newInMemoryUserWhoRepository()
 	server := httptest.NewServer(createFirmPersonHandler(formatter, repository))
 
@@ -87,7 +87,7 @@ func TestCreateFirmPerson(t *testing.T) {
 	if !headerOk {
 		t.Error("Location header is not set")
 	} else {
-		if !strings.Contains(loc[0], "/persons/") {
+		if !strings.Contains(loc[0], "/firmpersons/") {
 			t.Errorf("Location header should contain '/persons/'")
 		}
 		if len(loc[0]) != len(fakeMatchLocationResult) {
@@ -101,7 +101,7 @@ func TestCreateFirmPerson(t *testing.T) {
 		t.Errorf("Error Unmarsalling Firm %v ", err)
 	}
 
-	if newPerson.Name != "Caminos S.A." {
+	if newPerson.Name != "Lorea Gardening S.A." {
 		t.Errorf("Error Unmarsalling Firm %v ", err)
 	}
 

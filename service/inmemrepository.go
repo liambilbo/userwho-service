@@ -17,7 +17,7 @@ func newInMemoryUserWhoRepository() *inMemoryUserWhoRepository {
 
 func (repository *inMemoryUserWhoRepository) getPersonById(id string) (person userwho_engine.Person, err error) {
 	for _, v := range repository.persons {
-		if v.GetId() == id {
+		if v.Id == id {
 			person = v
 			return
 		}
@@ -34,7 +34,7 @@ func (repository *inMemoryUserWhoRepository) getPersons() (persons []userwho_eng
 func (repository *inMemoryUserWhoRepository) addPerson(person userwho_engine.Person) (err error) {
 	found := false
 	for _, v := range repository.persons {
-		if v.GetId() == person.GetId() {
+		if v.Id == person.Id {
 			found = true
 			break
 		}
@@ -53,7 +53,7 @@ func (repository *inMemoryUserWhoRepository) updatePerson(id string, person user
 
 	found := false
 	for k, v := range repository.persons {
-		if v.GetId() == person.GetId() {
+		if v.Id == person.Id {
 			found = true
 			repository.persons[k] = person
 			break

@@ -1,16 +1,27 @@
 hash: 7fba743097ec7a8803d3902eded8a06a28f1575d60509a35e2ec3bf9a9795443
-updated: 2017-10-31T10:49:07.018131434+01:00
+updated: 2017-11-08T12:20:41.18102023+01:00
 imports:
+- name: github.com/cloudnativego/cfmgo
+  version: 35605f2df87ae242b8c1fdef3c7ebc07916e339b
+  subpackages:
+  - params
 - name: github.com/codegangsta/negroni
   version: fde5e16d32adc7ad637e9cd9ad21d4ebc6192535
 - name: github.com/gorilla/context
   version: 08b5f424b9271eedf6f9f0ce86cb9396ed337a42
 - name: github.com/gorilla/mux
-  version: 24fca303ac6da784b9e8269f724ddeb0b2eea5e7
+  version: 7f08801859139f86dfafd1c296e2cba9a80d292e
 - name: github.com/liambilbo/userwho-engine
-  version: d5873172080483e269a9a447370c7f5519f2bede
+  version: 171ee47d43bd53c9f21828b1153c16cd7b20ae08
 - name: github.com/pborman/uuid
   version: e790cca94e6cc75c7064b1332e63811d4aae1a53
 - name: github.com/unrolled/render
-  version: 32bf1ea2a39e4e796d9040b5cf235258cee978c1
+  version: 65450fb6b2d3595beca39f969c411db8f8d5c806
+- name: gopkg.in/mgo.v2
+  version: 3f83fa5005286a7fe593b055f0d7771a7dce4655
+  subpackages:
+  - bson
+  - internal/json
+  - internal/sasl
+  - internal/scram
 testImports: []
