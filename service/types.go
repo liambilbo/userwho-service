@@ -67,12 +67,12 @@ type newFirmPersonResponse struct {
 	Name string `json:"name"`
 }
 
-func (preq *newFirmPersonResponse) copyPerson(person *userwho_engine.FirmPerson) {
+func (preq *newFirmPersonResponse) copyPerson(person userwho_engine.FirmPerson) {
 	preq.Id = person.Id
 	preq.Name = person.Name
 }
 
-func (preq *newPhysicalPersonResponse) copyPerson(person *userwho_engine.PhysicalPerson) {
+func (preq *newPhysicalPersonResponse) copyPerson(person userwho_engine.PhysicalPerson) {
 	preq.Id = person.Id
 	preq.Name = person.Name
 	preq.Surname = person.Surname
@@ -80,8 +80,8 @@ func (preq *newPhysicalPersonResponse) copyPerson(person *userwho_engine.Physica
 }
 
 type userWhoRepository interface {
-	getPersonById(id string) (person userwho_engine.Actor, err error)
-	getPersons() (persons []userwho_engine.Person, err error)
+	getPerson(id string) (person userwho_engine.Actor, err error)
+	getPersons() (persons []userwho_engine.Actor, err error)
 	addPerson(person userwho_engine.Actor) (err error)
 	updatePerson(id string, person userwho_engine.Actor) (err error)
 }

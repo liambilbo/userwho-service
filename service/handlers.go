@@ -11,18 +11,18 @@ import (
 func createFirmPersonHandler(formatter *render.Render, repository userWhoRepository) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		payload, _ := ioutil.ReadAll(req.Body)
-		var new newFirmPersonRequest
-		err := json.Unmarshal(payload, &new)
+		var newf newFirmPersonRequest
+		err := json.Unmarshal(payload, &newf)
 		if err != nil {
 			formatter.Text(w, http.StatusBadRequest, "Failed to parse request")
 			return
 		}
 
-		document, address := convertToEngine(new.newPersonRequest)
+		document, address := convertToEngine(newf.newPersonRequest)
 
-		newPerson := userwho_engine.NewFirmPerson(new.Name,
-			userwho_engine.Country(new.Nationality),
-			userwho_engine.Country(new.Address.Country),
+		newPerson := userwho_engine.NewFirmPerson(newf.Name,
+			userwho_engine.Country(newf.Nationality),
+			userwho_engine.Country(newf.SettingUpCountry),
 			document, address)
 
 		err = repository.addPerson(newPerson)
@@ -41,14 +41,16 @@ func createFirmPersonHandler(formatter *render.Render, repository userWhoReposit
 func createPhysicalPersonHandler(formatter *render.Render, repository userWhoRepository) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		payload, _ := ioutil.ReadAll(req.Body)
-		var new newPhysicalPersonRequest
-		err := json.Unmarshal(payload, &new)
+		var newP newPhysicalPersonRequest
+		err := json.Unmarshal(payload, &newP)
 		if err != nil {
 			formatter.Text(w, http.StatusBadRequest, "Failed to parse request")
 			return
 		}
 
-		newPerson := userwho_engine.NewPhysicalPerson(new.Name, new.Surname, new.SecondSurname)
+		document, address := convertToEngine(newP.newPersonRequest)
+		newPerson := userwho_engine.NewPhysicalPerson(newP.Name, newP.Surname, newP.SecondSurname,
+			userwho_engine.Country(newP.Nationality), userwho_engine.Country(newP.Address.Country), document, address)
 		err = repository.addPerson(newPerson)
 		if err != nil {
 			formatter.Text(w, http.StatusNotModified, "Failed to insert Firm Person")
@@ -67,7 +69,7 @@ func convertToEngine(new newPersonRequest) (document userwho_engine.Document, ad
 	document = userwho_engine.NewDocument(new.Document.Number,
 		userwho_engine.DocumentType(new.Document.Type),
 		userwho_engine.Country(new.Document.IssueCountry),
-		new.Document.IssueDate, new.Document.MaturityDate)
+		&new.Document.IssueDate, &new.Document.MaturityDate)
 
 	address = userwho_engine.NewAddress(userwho_engine.Country(new.Address.Country),
 		new.Address.PostalCode,

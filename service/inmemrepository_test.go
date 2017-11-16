@@ -3,12 +3,19 @@ package service
 import (
 	"github.com/liambilbo/userwho-engine"
 	"testing"
+	"time"
 )
 
 func TestGetPersonFromRepositoryById(t *testing.T) {
 
 	repo := newInMemoryUserWhoRepository()
-	firmPerson := userwho_engine.NewFirmPerson("Caminos S.A")
+
+	issueDate := time.Date(2009, time.November, 10, 23, 0, 0, 0, time.UTC)
+
+	document := userwho_engine.NewDocument("K1234", "CIF", "ESP", &issueDate, nil)
+	fiscalAdress := userwho_engine.NewAddress("ESP", "28029", "Madrid",
+		"Madrid", "CL", "Gutierrez Ceciana", "23", "")
+	firmPerson := userwho_engine.NewFirmPerson("Caminos S.A", "ESP", "ESP", document, fiscalAdress)
 	err := repo.addPerson(firmPerson)
 
 	if err != nil {

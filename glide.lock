@@ -1,18 +1,18 @@
 hash: 7fba743097ec7a8803d3902eded8a06a28f1575d60509a35e2ec3bf9a9795443
-updated: 2017-11-08T12:20:41.18102023+01:00
+updated: 2017-11-13T12:08:03.302741099+01:00
 imports:
 - name: github.com/cloudnativego/cfmgo
   version: 35605f2df87ae242b8c1fdef3c7ebc07916e339b
   subpackages:
   - params
 - name: github.com/codegangsta/negroni
-  version: fde5e16d32adc7ad637e9cd9ad21d4ebc6192535
+  version: 5dbbc83f748fc3ad38585842b0aedab546d0ea1e
 - name: github.com/gorilla/context
   version: 08b5f424b9271eedf6f9f0ce86cb9396ed337a42
 - name: github.com/gorilla/mux
   version: 7f08801859139f86dfafd1c296e2cba9a80d292e
 - name: github.com/liambilbo/userwho-engine
-  version: 171ee47d43bd53c9f21828b1153c16cd7b20ae08
+  version: fb286acb86fd483a09a68d18575a36e72099c10a
 - name: github.com/pborman/uuid
   version: e790cca94e6cc75c7064b1332e63811d4aae1a53
 - name: github.com/unrolled/render
